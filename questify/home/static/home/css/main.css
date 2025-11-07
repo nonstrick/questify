@@ -1,0 +1,392 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: #464646;
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+.wrapper {
+    background: linear-gradient(0deg, rgba(0, 209, 122, 0.5) 0%, rgba(250, 202, 30, 0.5) 100%);
+    width: 100%;
+    height: 1000px;
+}
+
+.container {
+    width: 1600px;
+    height: 30px;
+    margin: 0 auto;
+}
+
+header {
+    padding: 20px 0;
+    background-color: aliceblue;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .1 );
+}
+
+header img {
+    width: 200px;
+    
+}
+
+header nav {
+    float: right;
+    width: 50%;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    z-index: 2;
+    position: relative;
+    padding: 8px;
+}
+
+header nav ul li {
+    display: inline-block;
+}
+
+header nav ul li a {
+    color: #444444;
+}
+
+header nav ul li.active::after {
+    content: '';
+    display: block;
+}
+
+header nav ul li:not(.active) a:hover {
+    color: rgb(74, 118, 236);
+    transition: all 100ms ease;
+    cursor: pointer;
+}
+
+.hero {
+    padding-bottom: 100px;
+    position: relative;
+    z-index: 1;
+}
+
+.hero__info {
+    width: 530px;
+    padding-top: 70px;
+}
+
+.hero__info h2 {
+    color: rgb(74, 118, 236);
+    font-size: 50px;
+    font-weight: 1000;
+}
+
+.hero__info p {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 170%;
+    margin: 30px 0;
+}
+
+.hero__info .btn {
+    background: rgb(74, 118, 236);
+    color: white;
+    border-radius: 50px;
+    padding: 15px 30px;
+    border: 0;
+    transition: all 500ms ease;
+    font-size: 30px;
+}
+
+.hero__info .btn:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.hero__info h1 {
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 170%;
+    margin: 50px 0;
+    color: #444444;
+    opacity: 0.8;
+}
+
+.hero img {
+    position: absolute;
+    top: 70px;
+    right: 100px;
+    width: 500px ;
+    height: 500px;
+    border-radius: 50px;
+}
+
+/* Инфо секция */
+.desc {
+    padding-top: 1000px;
+}
+
+.desc h2 {
+    font-weight: 800;
+    font-size: 31px;
+    color: rgb(74, 118, 236);
+    padding-bottom: 50px;
+}
+
+.desc__info {
+    display: flex;
+    justify-content:space-between;
+}
+
+.desc .block img {
+    width: 60px;
+    padding-bottom: 10px;
+}
+
+.desc h3 {
+    font-weight: 400;
+    font-size: 25px;
+    color: rgb(74, 118, 236);
+    padding-bottom: 10px;
+}
+
+.desc .block {
+    padding: 50px 20px;
+    
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    line-height: 1.5;
+    border-radius: 50px;
+    box-shadow: 1px 1px 15px rgb(157, 182, 250);
+
+
+}
+
+/* Инфо секция2 */
+.desc_2 {
+    padding-top: 600px;
+}
+
+.desc_2 h2 {
+    font-weight: 800;
+    font-size: 31px;
+    color: rgb(74, 118, 236);
+    padding-bottom: 50px;
+}
+
+.desc_2__info {
+    display: flex;
+    justify-content:space-between;
+}
+
+.desc_2 .block img {
+    width: 60px;
+    padding-bottom: 10px;
+}
+
+.desc_2 h3 {
+    font-weight: 400;
+    font-size: 25px;
+    color: rgb(74, 118, 236);
+    padding-bottom: 10px;
+}
+
+.desc_2 .block {
+    padding: 50px 20px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    line-height: 1.5;
+    border-radius: 50px;
+    box-shadow: 1px 1px 15px rgb(157, 182, 250);
+}
+
+/* Популярные хобби*/
+.hobbi {
+    padding-top: 600px;
+}
+
+.hobbi h2 {
+    font-weight: 800;
+    font-size: 31px;
+    color: rgb(74, 118, 236);
+    padding-bottom: 50px;
+}
+
+.hobbi .btn {
+    float: right;
+    background: rgb(74, 118, 236);
+    color: white;
+    border-radius: 50px;
+    padding: 15px 30px;
+    border: 0;
+    transition: all 500ms ease;
+    font-size: 20px;
+}
+
+.hobbi .btn:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.hobbi__info {
+    display: flex;
+    justify-content:space-between;
+}
+
+.hobbi .block {
+    padding: 50px 20px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    line-height: 1.5;
+    border-radius: 35px;
+    box-shadow: 1px 1px 10px rgb(157, 182, 250);
+    margin: 10px;
+}
+
+.hobbi .block img {
+    width: 350px ;
+    height: 250px ;
+    border-radius: 25px;
+
+}
+
+.hobbi .block span {
+    display: block;
+    text-align:left;
+    margin-top: 20px;
+      color: rgb(74, 118, 236);
+    font-size: 25px;
+}
+
+.hobbi .block span img{
+    position: relative;
+    top: 5px;
+    width: 50px;
+    height: 50px;
+}
+
+.hobbi .block span2 {
+    display: block;
+    text-align:left;
+    margin-top: 20px;
+}
+.hobbi .block span2 img {
+    position: relative;
+    top: 5px;
+    width: 30px;
+    height: 30px;
+}
+
+/* Отзывы */
+.reviews {
+    padding-top: 800px;
+}
+
+.reviews h2 {
+    font-weight: 800;
+    font-size: 31px;
+    color: rgb(74, 118, 236);
+    padding-bottom: 50px;
+}
+
+.reviews__info {
+    display: flex;
+    justify-content:space-between;
+}
+
+.reviews .block {
+    padding: 50px 20px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    text-align: left;
+    line-height: 1.5;
+    border-radius: 50px;
+    box-shadow: 1px 1px 10px rgb(157, 182, 250);
+}
+
+.reviews .block img{
+    position: relative;
+    top: 5px;
+    width: 50px;
+    height: 50px;
+}
+
+.reviews .block span p {
+    font-size: 25px;
+}
+
+.reviews .block span {
+    color: rgb(74, 118, 236);
+    font-size: 25px;
+}
+
+/* Готовы к новым открытиям?*/
+.desc3 {
+    padding-top: 600px;
+    padding-bottom: 300px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.desc3 h2 {
+    color: rgb(74, 118, 236);
+    font-size: 35px;
+    font-weight: 1000;
+}
+
+.desc3__info p {
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 170%;
+    margin: 30px 0;
+    width: 1000px;
+}
+
+.desc3__info .btn {
+    background: rgb(74, 118, 236);
+    color: white;
+    border-radius: 50px;
+    padding: 15px 30px;
+    border: 0;
+    transition: all 500ms ease;
+    font-size: 30px;
+}
+
+.desc3__info .btn:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+

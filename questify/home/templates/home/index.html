@@ -1,0 +1,155 @@
+{% extends 'home/layout.html' %}
+{% load static %}
+
+{% block links %}
+  <link rel="stylesheet" href="{% static 'home/css/main.css' %}" />
+{% endblock %}
+
+{% block title %}
+  Questify
+{% endblock %}
+
+{% block body %}
+  <div class="wrapper">
+    <header>
+      <div class="container">
+        <div class="nav__wrapper">
+          <img src="{% static 'home/img/logo.png' %}" alt="" />
+          <nav>
+            <ul>
+              <li>
+                <a href="#">Главная</a>
+              </li>
+              <li>
+                <a href="#">Пройти тест</a>
+              </li>
+              <li>
+                <a href="#">Сообщество</a>
+              </li>
+              <li>
+                <a href="#">О проекте</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <div class="hero container">
+      <div class="hero__info">
+        <h2>Откройте новое хобби, персонально для вас</h2>
+        <p>Мы - первый в Рунете интерактивный генератор хобби и увлечений. Получите идеи, которые подходят именно вам, на основе интересов, навыков, времени, бюджета и даже города.</p>
+        <button class="btn">Начать подбор</button>
+        <h1>Более 10 000 пользователей открыли новое хобби</h1>
+      </div>
+      <img src="{% static 'home/img/hero.jpg' %}" alt="" />
+    </div>
+
+    <div class="container desc">
+      <h2>Как это работает?</h2>
+      <div class="desc__info">
+        <div class="block">
+          <img src="{% static 'home/img/desc1/test.png' %}" alt="" />
+          <h3>1. Пройдите короткий тест</h3>
+          <p>Ответье на 6 вопросов: ваши интересы, навыки, бюджет, время, город.</p>
+        </div>
+        <div class="block">
+          <img src="{% static 'home/img/desc1/form.png' %}" alt="" />
+          <h3>2. Получите персональные идеи</h3>
+          <p>Алгоритм подберёт хобби, подходящие именно вам, включая локальные клубы и мероприятия.</p>
+        </div>
+        <div class="block">
+          <img src="{% static 'home/img/desc1/idea.png' %}" alt="" />
+          <h3>3. Вдохновляйтесь и присоединятесь</h3>
+          <p>Читайте гайды, истории, вступайте в сообщество - делитесь успехами и задавайте вопросы!</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container desc_2">
+      <h2>Почему выбирают нас?</h2>
+      <div class="desc_2__info">
+        <div class="block">
+          <img src="{% static 'home/img/desc2/interes.png' %}" alt="" />
+          <h3>Только ваши интересы</h3>
+          <p>Никаких случайных списков - только персональные рекомендации на основе ваших ответов.</p>
+        </div>
+        <div class="block">
+          <img src="{% static 'home/img/desc2/club.png' %}" alt="" />
+          <h3>Локальные клубы и события</h3>
+          <p>Находим для вас клубы и секции рядом, чтобы легко начать и познакомиться с единомышленниками.</p>
+        </div>
+        <div class="block">
+          <img src="{% static 'home/img/desc2/expert.png' %}" alt="" />
+          <h3>Советы и гайды от экспертов</h3>
+          <p>Подробрые инструкции, подборки видео и советы от опытных участников помогут быстро погрузиться в новое хобби.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container hobbi">
+      <button class="btn">Выбрать своё</button>
+      <h2>Популярные хобби</h2>
+      <div class="hobbi__info">
+        <div class="block">
+          <img src="{% static 'home/img/hobbi/base/boots.png' %}" alt="" />
+          <span><img src="{% static 'home/img/hobbi/boots.png' %}" alt="" /> Треккинг</span>
+          <p>Исследуйте природу, укрепите здоровье и найдите новых друзей в походе.</p>
+          <span2>
+            <img src="{% static 'home/img/dollar.png' %}" alt="" /> от 0 ₽
+          </span2>
+        </div>
+        <div class="block">
+          <img src="{% static 'home/img//hobbi/base/art.png' %}" alt="" />
+          <span><img src="{% static 'home/img/hobbi/art.png' %}" alt="" /> Живопись</span>
+          <p>Творите на холсте - расслабьтесь, самовырожайтесь и открывайте новые техники.</p>
+          <span2>
+            <img src="{% static 'home/img/dollar.png' %}" alt="" /> от 800 ₽
+          </span2>
+        </div>
+        <div class="block">
+          <img src="{% static 'home/img/hobbi/base/guitar.png' %}" alt="" />
+          <span><img src="{% static 'home/img/hobbi/guitar.png' %}" alt="" /> Гитара</span>
+          <p>Научитесь играть любимые мелодии, выступайте с друзьями или для себя.</p>
+          <span2>
+            <img src="{% static 'home/img/dollar.png' %}" alt="" /> от 4000 ₽
+          </span2>
+        </div>
+        <div class="block">
+          <img src="{% static 'home/img/hobbi/base/yoga.png' %}" alt="" />
+          <span><img src="{% static 'home/img/hobbi/yoga.png' %}" alt="" /> Йога</span>
+          <p>Расслабление, отдых для ума и тела, перезагрузка организма.</p>
+          <span2>
+            <img src="{% static 'home/img/dollar.png' %}" alt="" /> от 500 ₽
+          </span2>
+        </div>
+      </div>
+    </div>
+
+    <div class="container reviews">
+      <h2>Отзывы пользователей</h2>
+      <div class="reviews__info">
+        <div class="block">
+          <span><img src="{% static 'home/img/man.png' %}" alt="" /> Анна, 28</span>
+          <p>Благодаря вам я открыла для себя живопись! Уже посещаю клуб, новые друзья и масса вдохновения. Рекомендую!</p>
+        </div>
+        <div class="block">
+          <span><img src="{% static 'home/img/man.png' %}" alt="" /> Евгений, 34</span>
+          <p>Удивился точности рекомендацй! Нашёл фотоклуб рядом, теперь каждую неделю новые идеи для съёмки.</p>
+        </div>
+        <div class="block">
+          <span><img src="{% static 'home/img/man.png' %}" alt="" /> Алексей, 25</span>
+          <p>Сайт помог выбрать хобби по бюджету и времени. Теперь хожу в походы и чувствую себя намного лучше!</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container desc3">
+      <h2>Готовы к новым открытиям?</h2>
+      <div class="desc3__info">
+        <p>Получите подборку хобби, созданную лично для вас. Начните с простого теста - это займёт меньше минуты!</p>
+        <button class="btn">Пройти тест</button>
+      </div>
+    </div>
+  </div>
+{% endblock %}
