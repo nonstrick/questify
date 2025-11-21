@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: #464646;
+    font-size: 16px;
+    background-color: white;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+.container {
+    max-width: 1600px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+header {
+    padding: 20px 0;
+    background-color: aliceblue;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .1 );
+}
+
+.nav__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header img {
+    width: 200px;
+    max-width: 100%;
+    height: auto;
+}
+
+header nav {
+    width: auto;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 50px;
+    z-index: 2;
+    position: relative;
+    padding: 0;
+    align-items: center;
+    margin: 0;
+}
+
+header nav ul li {
+    display: inline-block;
+}
+
+header nav ul li a {
+    color: #444444;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    display: inline-block;
+    position: relative;
+}
+
+header nav ul li a:hover {
+    background: rgb(74, 118, 236);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(74, 118, 236, 0.3);
+}
+
+header nav ul li.active a {
+    background: rgb(74, 118, 236);
+    color: white;
+}
+
+header nav ul li.active::after {
+    content: '';
+    display: none;
+}
+
+.nav-btn-login {
+    background: rgba(74, 118, 236, 0.1);
+    color: rgb(74, 118, 236);
+    border: 2px solid rgb(74, 118, 236);
+}
+
+.nav-btn-login:hover {
+    background: rgb(74, 118, 236);
+    color: white;
+    border-color: rgb(74, 118, 236);
+}
+
+.nav-btn-register {
+    background: rgb(74, 118, 236);
+    color: white;
+    border: 2px solid rgb(74, 118, 236);
+    font-weight: 600;
+}
+
+.nav-btn-register:hover {
+    background: rgb(60, 100, 200);
+    border-color: rgb(60, 100, 200);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(74, 118, 236, 0.4);
+}
+
+.nav-btn-logout {
+    background: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+    border: 2px solid #dc3545;
+}
+
+.nav-btn-logout:hover {
+    background: #dc3545;
+    color: white;
+    border-color: #dc3545;
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+@media (max-width: 768px) {
+    header nav ul {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    
+    header img {
+        width: 150px;
+    }
+    
+    header nav ul li a {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    header {
+        padding: 15px 0;
+    }
+    
+    header nav ul {
+        gap: 10px;
+        font-size: 14px;
+    }
+}
+

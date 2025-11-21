@@ -1,0 +1,59 @@
+{% extends 'home/layout.html' %}
+{% load static %}
+
+{% block links %}
+  <link rel="stylesheet" href="{% static 'home/css/auth.css' %}" />
+{% endblock %}
+
+{% block title %}
+  Профиль - Questify
+{% endblock %}
+
+{% block body %}
+  <div class="profile-wrapper">
+    {% include 'home/includes/header.html' %}
+
+    <div class="container">
+      <div class="profile-container">
+        <div class="profile-header">
+          <h2>Профиль пользователя</h2>
+        </div>
+
+        {% if messages %}
+          <ul class="messages">
+            {% for message in messages %}
+              <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        <div class="profile-info">
+          <div class="profile-info-item">
+            <div class="profile-info-label">Имя пользователя</div>
+            <div class="profile-info-value">{{ user.username }}</div>
+          </div>
+
+          <div class="profile-info-item">
+            <div class="profile-info-label">Email</div>
+            <div class="profile-info-value">{{ user.email|default:"Не указан" }}</div>
+          </div>
+
+          <div class="profile-info-item">
+            <div class="profile-info-label">Дата регистрации</div>
+            <div class="profile-info-value">{{ user.date_joined|date:"d.m.Y H:i" }}</div>
+          </div>
+
+          <div class="profile-info-item">
+            <div class="profile-info-label">Последний вход</div>
+            <div class="profile-info-value">{{ user.last_login|date:"d.m.Y H:i"|default:"Никогда" }}</div>
+          </div>
+        </div>
+
+        <div class="profile-actions">
+          <a href="{% url 'logout' %}" class="btn-logout">Выйти из аккаунта</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+

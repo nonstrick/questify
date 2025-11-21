@@ -1,0 +1,73 @@
+{% extends 'home/layout.html' %}
+{% load static %}
+
+{% block links %}
+  <link rel="stylesheet" href="{% static 'home/css/community.css' %}" />
+{% endblock %}
+
+{% block title %}
+  Сообщество - Questify
+{% endblock %}
+
+{% block body %}
+  <div class="community-wrapper">
+    {% include 'home/includes/header.html' %}
+
+    <div class="container">
+      <div class="community-hero">
+        <h1>👥 Сообщество Questify</h1>
+        <p>Присоединяйтесь к тысячам людей, которые уже нашли своё идеальное хобби!</p>
+      </div>
+
+      <div class="community-stats">
+        <div class="stat-card">
+          <div class="stat-icon">👤</div>
+          <div class="stat-info">
+            <div class="stat-number">{{ total_users }}</div>
+            <div class="stat-label">Всего пользователей</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🆕</div>
+          <div class="stat-info">
+            <div class="stat-number">{{ recent_users }}</div>
+            <div class="stat-label">Новых за неделю</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🎯</div>
+          <div class="stat-info">
+            <div class="stat-number">∞</div>
+            <div class="stat-label">Возможностей</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="community-section">
+        <h2>Активные участники</h2>
+        <div class="users-grid">
+          {% for user in users %}
+            <div class="user-card">
+              <div class="user-avatar">
+                {{ user.username|first|upper }}
+              </div>
+              <div class="user-info">
+                <h3>{{ user.username }}</h3>
+                <p class="user-email">{{ user.email|default:"Email не указан" }}</p>
+                <p class="user-date">Присоединился: {{ user.date_joined|date:"d.m.Y" }}</p>
+              </div>
+            </div>
+          {% empty %}
+            <p class="empty-message">Пока нет других пользователей</p>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="community-cta">
+        <h2>Готовы найти своё хобби?</h2>
+        <p>Пройдите тест и получите персональные рекомендации уже сегодня!</p>
+        <a href="{% url 'test' %}" class="btn-community">Пройти тест</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

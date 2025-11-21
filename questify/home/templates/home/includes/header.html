@@ -1,0 +1,42 @@
+{% load static %}
+<header>
+  <div class="container">
+    <div class="nav__wrapper">
+      <img src="{% static 'home/img/logo.png' %}" alt="" />
+      <nav>
+        <ul>
+          <li>
+            <a href="{% url 'home' %}">Главная</a>
+          </li>
+          {% if user.is_authenticated %}
+            <li>
+              <a href="{% url 'test' %}">Пройти тест</a>
+            </li>
+            <li>
+              <a href="{% url 'community' %}">Сообщество</a>
+            </li>
+          {% endif %}
+          <li>
+            <a href="{% url 'about' %}">О проекте</a>
+          </li>
+          {% if user.is_authenticated %}
+            <li>
+              <a href="{% url 'profile' %}">Профиль</a>
+            </li>
+            <li>
+              <a href="{% url 'logout' %}" class="nav-btn-logout">Выйти</a>
+            </li>
+          {% else %}
+            <li>
+              <a href="{% url 'login' %}" class="nav-btn-login">Войти</a>
+            </li>
+            <li>
+              <a href="{% url 'register' %}" class="nav-btn-register">Регистрация</a>
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block links %}
-  <link rel="stylesheet" href="{% static 'home/css/main.css' %}" />
+  <link rel="stylesheet" href="{% static 'home/css/home.css' %}" />
 {% endblock %}
 
 {% block title %}
@@ -11,41 +11,24 @@
 
 {% block body %}
   <div class="wrapper">
-    <header>
-      <div class="container">
-        <div class="nav__wrapper">
-          <img src="{% static 'home/img/logo.png' %}" alt="" />
-          <nav>
-            <ul>
-              <li>
-                <a href="#">Главная</a>
-              </li>
-              <li>
-                <a href="#">Пройти тест</a>
-              </li>
-              <li>
-                <a href="#">Сообщество</a>
-              </li>
-              <li>
-                <a href="#">О проекте</a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </header>
+    {% include 'home/includes/header.html' %}
 
     <div class="hero container">
       <div class="hero__info">
         <h2>Откройте новое хобби, персонально для вас</h2>
         <p>Мы - первый в Рунете интерактивный генератор хобби и увлечений. Получите идеи, которые подходят именно вам, на основе интересов, навыков, времени, бюджета и даже города.</p>
-        <button class="btn">Начать подбор</button>
+        {% if user.is_authenticated %}
+          <a href="{% url 'test' %}" class="btn">Начать подбор</a>
+        {% else %}
+          <a href="{% url 'register' %}" class="btn">Начать подбор</a>
+        {% endif %}
         <h1>Более 10 000 пользователей открыли новое хобби</h1>
       </div>
       <img src="{% static 'home/img/hero.jpg' %}" alt="" />
     </div>
+  </div>
 
-    <div class="container desc">
+  <div class="container desc">
       <h2>Как это работает?</h2>
       <div class="desc__info">
         <div class="block">
@@ -88,7 +71,11 @@
     </div>
 
     <div class="container hobbi">
-      <button class="btn">Выбрать своё</button>
+      {% if user.is_authenticated %}
+        <a href="{% url 'test' %}" class="btn">Выбрать своё</a>
+      {% else %}
+        <a href="{% url 'register' %}" class="btn">Выбрать своё</a>
+      {% endif %}
       <h2>Популярные хобби</h2>
       <div class="hobbi__info">
         <div class="block">
@@ -147,9 +134,12 @@
     <div class="container desc3">
       <h2>Готовы к новым открытиям?</h2>
       <div class="desc3__info">
-        <p>Получите подборку хобби, созданную лично для вас. Начните с простого теста - это займёт меньше минуты!</p>
-        <button class="btn">Пройти тест</button>
+        <p>Получите подборку хобби, созданную лично для вас. Начните с простого теста!</p>
+        {% if user.is_authenticated %}
+          <a href="{% url 'test' %}" class="btn">Пройти тест</a>
+        {% else %}
+          <a href="{% url 'register' %}" class="btn">Пройти тест</a>
+        {% endif %}
       </div>
     </div>
-  </div>
 {% endblock %}

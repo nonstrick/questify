@@ -1,0 +1,22 @@
+{% extends 'home/layout.html' %}
+{% load static %}
+
+{% block links %}
+  <link rel="stylesheet" href="{% static 'home/css/test.css' %}" />
+{% endblock %}
+
+{% block title %}
+  Пройти тест - Questify
+{% endblock %}
+
+{% block body %}
+  <div class="test-wrapper">
+    {% include 'home/includes/header.html' %}
+
+    <div class="container">
+      <div class="test-container">
+      </div>
+    </div>
+  </div>
+{% endblock %}
+

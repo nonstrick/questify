@@ -1,92 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-    color: #464646;
-    font-size: 16px;
-}
-
-a {
-    text-decoration: none;
-}
-
-img {
-    max-width: 100%;
-}
-
 .wrapper {
     background: linear-gradient(0deg, rgba(0, 209, 122, 0.5) 0%, rgba(250, 202, 30, 0.5) 100%);
     width: 100%;
-    height: 1000px;
-}
-
-.container {
-    width: 1600px;
-    height: 30px;
-    margin: 0 auto;
-}
-
-header {
-    padding: 20px 0;
-    background-color: aliceblue;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, .1 );
-}
-
-header img {
-    width: 200px;
-    
-}
-
-header nav {
-    float: right;
-    width: 50%;
-}
-
-header nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    z-index: 2;
-    position: relative;
-    padding: 8px;
-}
-
-header nav ul li {
-    display: inline-block;
-}
-
-header nav ul li a {
-    color: #444444;
-}
-
-header nav ul li.active::after {
-    content: '';
-    display: block;
-}
-
-header nav ul li:not(.active) a:hover {
-    color: rgb(74, 118, 236);
-    transition: all 100ms ease;
-    cursor: pointer;
+    min-height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
 }
 
 .hero {
-    padding-bottom: 100px;
+    padding: 70px 0 100px;
     position: relative;
     z-index: 1;
 }
 
 .hero__info {
     width: 530px;
-    padding-top: 70px;
+    padding-top: 0;
 }
 
 .hero__info h2 {
@@ -110,6 +38,8 @@ header nav ul li:not(.active) a:hover {
     border: 0;
     transition: all 500ms ease;
     font-size: 30px;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .hero__info .btn:hover {
@@ -129,15 +59,15 @@ header nav ul li:not(.active) a:hover {
 .hero img {
     position: absolute;
     top: 70px;
-    right: 100px;
-    width: 500px ;
+    right: 20px;
+    width: 500px;
     height: 500px;
     border-radius: 50px;
+    object-fit: cover;
 }
 
-/* Инфо секция */
 .desc {
-    padding-top: 1000px;
+    padding-top: 80px;
 }
 
 .desc h2 {
@@ -149,7 +79,9 @@ header nav ul li:not(.active) a:hover {
 
 .desc__info {
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .desc .block img {
@@ -166,8 +98,9 @@ header nav ul li:not(.active) a:hover {
 
 .desc .block {
     padding: 50px 20px;
-    
-    width: 400px;
+    flex: 1;
+    min-width: 280px;
+    max-width: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -176,13 +109,16 @@ header nav ul li:not(.active) a:hover {
     line-height: 1.5;
     border-radius: 50px;
     box-shadow: 1px 1px 15px rgb(157, 182, 250);
-
-
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Инфо секция2 */
+.desc .block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(74, 118, 236, 0.3);
+}
+
 .desc_2 {
-    padding-top: 600px;
+    padding-top: 80px;
 }
 
 .desc_2 h2 {
@@ -194,7 +130,9 @@ header nav ul li:not(.active) a:hover {
 
 .desc_2__info {
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .desc_2 .block img {
@@ -211,7 +149,9 @@ header nav ul li:not(.active) a:hover {
 
 .desc_2 .block {
     padding: 50px 20px;
-    width: 400px;
+    flex: 1;
+    min-width: 280px;
+    max-width: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -220,11 +160,16 @@ header nav ul li:not(.active) a:hover {
     line-height: 1.5;
     border-radius: 50px;
     box-shadow: 1px 1px 15px rgb(157, 182, 250);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Популярные хобби*/
+.desc_2 .block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(74, 118, 236, 0.3);
+}
+
 .hobbi {
-    padding-top: 600px;
+    padding-top: 80px;
 }
 
 .hobbi h2 {
@@ -243,6 +188,8 @@ header nav ul li:not(.active) a:hover {
     border: 0;
     transition: all 500ms ease;
     font-size: 20px;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .hobbi .btn:hover {
@@ -252,12 +199,16 @@ header nav ul li:not(.active) a:hover {
 
 .hobbi__info {
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .hobbi .block {
     padding: 50px 20px;
-    width: 400px;
+    flex: 1;
+    min-width: 280px;
+    max-width: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -266,25 +217,29 @@ header nav ul li:not(.active) a:hover {
     line-height: 1.5;
     border-radius: 35px;
     box-shadow: 1px 1px 10px rgb(157, 182, 250);
-    margin: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hobbi .block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(74, 118, 236, 0.3);
 }
 
 .hobbi .block img {
-    width: 350px ;
-    height: 250px ;
+    width: 350px;
+    height: 250px;
     border-radius: 25px;
-
 }
 
 .hobbi .block span {
     display: block;
-    text-align:left;
+    text-align: left;
     margin-top: 20px;
-      color: rgb(74, 118, 236);
+    color: rgb(74, 118, 236);
     font-size: 25px;
 }
 
-.hobbi .block span img{
+.hobbi .block span img {
     position: relative;
     top: 5px;
     width: 50px;
@@ -293,9 +248,10 @@ header nav ul li:not(.active) a:hover {
 
 .hobbi .block span2 {
     display: block;
-    text-align:left;
+    text-align: left;
     margin-top: 20px;
 }
+
 .hobbi .block span2 img {
     position: relative;
     top: 5px;
@@ -303,9 +259,8 @@ header nav ul li:not(.active) a:hover {
     height: 30px;
 }
 
-/* Отзывы */
 .reviews {
-    padding-top: 800px;
+    padding-top: 80px;
 }
 
 .reviews h2 {
@@ -317,12 +272,16 @@ header nav ul li:not(.active) a:hover {
 
 .reviews__info {
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .reviews .block {
     padding: 50px 20px;
-    width: 400px;
+    flex: 1;
+    min-width: 280px;
+    max-width: 400px;
     display: flex;
     flex-direction: column;
     justify-content: left;
@@ -331,9 +290,15 @@ header nav ul li:not(.active) a:hover {
     line-height: 1.5;
     border-radius: 50px;
     box-shadow: 1px 1px 10px rgb(157, 182, 250);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.reviews .block img{
+.reviews .block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(74, 118, 236, 0.3);
+}
+
+.reviews .block img {
     position: relative;
     top: 5px;
     width: 50px;
@@ -349,10 +314,8 @@ header nav ul li:not(.active) a:hover {
     font-size: 25px;
 }
 
-/* Готовы к новым открытиям?*/
 .desc3 {
-    padding-top: 600px;
-    padding-bottom: 300px;
+    padding: 80px 0 100px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -372,7 +335,8 @@ header nav ul li:not(.active) a:hover {
     font-size: 25px;
     line-height: 170%;
     margin: 30px 0;
-    width: 1000px;
+    max-width: 1000px;
+    width: 100%;
 }
 
 .desc3__info .btn {
@@ -383,10 +347,109 @@ header nav ul li:not(.active) a:hover {
     border: 0;
     transition: all 500ms ease;
     font-size: 30px;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .desc3__info .btn:hover {
     cursor: pointer;
     transform: scale(1.1);
+}
+
+@media (max-width: 1200px) {
+    .hero__info h2 {
+        font-size: 40px;
+    }
+    
+    .hero__info .btn {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 40px 0 60px;
+    }
+    
+    .hero__info {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .hero__info h2 {
+        font-size: 32px;
+    }
+    
+    .hero__info p {
+        font-size: 18px;
+    }
+    
+    .hero__info .btn {
+        font-size: 20px;
+        padding: 12px 25px;
+    }
+    
+    .hero img {
+        position: relative;
+        top: auto;
+        right: auto;
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+        margin: 30px auto 0;
+        display: block;
+    }
+    
+    .desc__info,
+    .desc_2__info,
+    .hobbi__info,
+    .reviews__info {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .desc .block,
+    .desc_2 .block,
+    .hobbi .block,
+    .reviews .block {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .hobbi .btn {
+        float: none;
+        display: block;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    
+    .desc3__info p {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero__info h2 {
+        font-size: 28px;
+    }
+    
+    .hero__info p {
+        font-size: 16px;
+    }
+    
+    .desc h2,
+    .desc_2 h2,
+    .hobbi h2,
+    .reviews h2,
+    .desc3 h2 {
+        font-size: 24px;
+    }
+    
+    .desc .block,
+    .desc_2 .block,
+    .hobbi .block,
+    .reviews .block {
+        padding: 30px 15px;
+    }
 }
 
