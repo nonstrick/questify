@@ -15,8 +15,183 @@
 
     <div class="container">
       <div class="test-container">
+        <div class="test-header">
+          <h1>Найди своё идеальное хобби</h1>
+          <p>Ответь на несколько вопросов, и мы подберём для тебя идеальные увлечения</p>
+        </div>
+
+        <div class="chat-container" id="chatContainer">
+          <div class="chat-messages" id="chatMessages">
+            {% if request.session.test_messages %}
+              {% for msg in request.session.test_messages %}
+                {% if msg.role == 'assistant' %}
+                  <div class="message bot-message">
+                    <div class="message-avatar">🤖</div>
+                    <div class="message-content">
+                      <p>{{ msg.content|linebreaksbr }}</p>
+                    </div>
+                  </div>
+                {% elif msg.role == 'user' %}
+                  <div class="message user-message">
+                    <div class="message-content">
+                      <p>{{ msg.content }}</p>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            {% else %}
+              <div class="message bot-message">
+                <div class="message-avatar">🤖</div>
+                <div class="message-content">
+                  <p>Привет! Рад знакомству! Для начала расскажи немного о себе: какие у тебя интересы и предпочтения? Чем увлекался раньше? Сколько примерно времени можешь уделять новому занятию каждую неделю? Какой у тебя бюджет на новое хобби - низкий, средний или высокий? Расскажешь ещё, где живёшь? Это поможет подобрать оптимальные варианты именно для тебя.</p>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+
+          <div class="chat-input-container">
+            <form id="chatForm" class="chat-form">
+              {% csrf_token %}
+              <input 
+                type="text" 
+                id="messageInput" 
+                class="chat-input" 
+                placeholder="Напиши свой ответ..."
+                autocomplete="off"
+              />
+              <button type="submit" class="chat-send-btn" id="sendBtn">
+                <span>Отправить</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+            </form>
+            <div class="chat-loading" id="loadingIndicator" style="display: none;">
+              <div class="loading-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="test-actions">
+            <button class="btn-reset" id="resetBtn">Начать заново</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
+  <script>
+    const chatMessages = document.getElementById('chatMessages');
+    const chatForm = document.getElementById('chatForm');
+    const messageInput = document.getElementById('messageInput');
+    const sendBtn = document.getElementById('sendBtn');
+    const loadingIndicator = document.getElementById('loadingIndicator');
+    const resetBtn = document.getElementById('resetBtn');
+
+    function addMessage(content, isBot = false) {
+      const messageDiv = document.createElement('div');
+      messageDiv.className = isBot ? 'message bot-message' : 'message user-message';
+      
+      if (isBot) {
+        messageDiv.innerHTML = `
+          <div class="message-avatar">🤖</div>
+          <div class="message-content">
+            <p>${content.replace(/\n/g, '<br>')}</p>
+          </div>
+        `;
+      } else {
+        messageDiv.innerHTML = `
+          <div class="message-content">
+            <p>${content}</p>
+          </div>
+        `;
+      }
+      
+      chatMessages.appendChild(messageDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function setLoading(loading) {
+      if (loading) {
+        loadingIndicator.style.display = 'flex';
+        sendBtn.disabled = true;
+        messageInput.disabled = true;
+      } else {
+        loadingIndicator.style.display = 'none';
+        sendBtn.disabled = false;
+        messageInput.disabled = false;
+        messageInput.focus();
+      }
+    }
+
+    chatForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const message = messageInput.value.trim();
+      if (!message) return;
+      
+      addMessage(message, false);
+      messageInput.value = '';
+      setLoading(true);
+      
+      try {
+        const response = await fetch('{% url "test_chat" %}', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+          },
+          body: JSON.stringify({ message: message })
+        });
+        
+        const data = await response.json();
+        
+        if (data.error) {
+          addMessage('Произошла ошибка: ' + data.error, true);
+        } else {
+          addMessage(data.message, true);
+          
+          if (data.stage === 'completed') {
+            messageInput.disabled = true;
+            sendBtn.disabled = true;
+          }
+        }
+      } catch (error) {
+        addMessage('Произошла ошибка при отправке сообщения. Попробуйте ещё раз.', true);
+        console.error('Error:', error);
+      } finally {
+        setLoading(false);
+      }
+    });
+
+    resetBtn.addEventListener('click', async () => {
+      if (!confirm('Вы уверены, что хотите начать тест заново? Весь прогресс будет потерян.')) {
+        return;
+      }
+      
+      try {
+        const response = await fetch('{% url "test_reset" %}', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+          }
+        });
+        
+        if (response.ok) {
+          location.reload();
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Ошибка при сбросе теста');
+      }
+    });
+
+    messageInput.focus();
+  </script>
 {% endblock %}
 
